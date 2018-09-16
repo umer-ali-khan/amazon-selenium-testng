@@ -1,0 +1,11 @@
+com.amazon.selenium.server.url=http://192.168.0.22:4723/wd/hub
+com.amazon.web.url=
+com.amazon.headless=
+com.amazon.browser.name=FIREFOX
+com.amazon.accept.ssl=true
+com.amazon.browser.version=
+com.amazon.platform=ANY
+com.amazon.cssselectors=true
+
+
+
