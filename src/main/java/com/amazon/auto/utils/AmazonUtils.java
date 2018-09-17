@@ -59,5 +59,11 @@ public final class AmazonUtils {
 		js.executeScript(jsCode, ele);
 
 	}
+	
+	public static String getPageTitle(RemoteWebDriver driver) {
+	  
+	  return driver.getTitle();
+	  
+	}
 
 }

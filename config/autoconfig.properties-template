@@ -1,7 +1,7 @@
-com.amazon.selenium.server.url=http://192.168.0.22:4723/wd/hub
-com.amazon.web.url=
-com.amazon.headless=
-com.amazon.browser.name=chrome
+com.amazon.selenium.server.url=
+com.amazon.web.url=https://www.amazon.ca
+com.amazon.headless=false
+com.amazon.browser.name=firefox
 com.amazon.accept.ssl=true
 com.amazon.browser.version=
 com.amazon.platform=ANY
