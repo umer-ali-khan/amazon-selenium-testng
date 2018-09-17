@@ -2,7 +2,7 @@ package com.amazon.automation.pagetests;
 
 
 import org.testng.Assert;
-
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import org.testng.annotations.Test;
@@ -43,6 +43,10 @@ public class AmazonMainPageTest extends AmazonSuperTest {
 		
 	}
 	
-	
+	@AfterClass
+	public void tearDown() {
+		
+		if(getDriver()!= null)getDriver().close();
+	}
 
 }

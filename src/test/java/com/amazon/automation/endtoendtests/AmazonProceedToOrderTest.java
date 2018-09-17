@@ -2,7 +2,7 @@ package com.amazon.automation.endtoendtests;
 
 
 import org.testng.Assert;
-
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import org.testng.annotations.Test;
@@ -52,6 +52,11 @@ public class AmazonProceedToOrderTest extends AmazonSuperTest {
 	}
 	
 	
-	
+	@AfterClass
+	public void tearDown() {
+		
+		if(getDriver()!= null)getDriver().close();
+	}
+
 
 }

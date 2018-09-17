@@ -7,8 +7,6 @@ import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import org.testng.annotations.AfterSuite;
-
 import org.testng.annotations.BeforeSuite;
 
 import com.amazon.auto.browsers.BrowserFactory;
@@ -73,11 +71,7 @@ public abstract class AmazonSuperTest {
 	public static DesiredCapabilities getCapabilities() {
 		return capabilities;
 	}
-
-	@AfterSuite
-	public void closeSessions() {
-		while(getDriver()!=null) getDriver().quit();
-	}
+	
 
 	// private methods
 
