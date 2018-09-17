@@ -26,4 +26,19 @@ public final class Constants {
 		
 	}
 	
+	public static final class JSCode{
+		
+		private JSCode() {}
+		
+		public static final String SCROLL_INTO_VIEW = "arguments[0].scrollIntoView(true);";
+	}
+	
+	
+	public static final class TimeDuration{
+		
+		private TimeDuration() {}
+		
+		public static final int WAIT_FOR_DISPLAY = 10;
+	}
+	
 }

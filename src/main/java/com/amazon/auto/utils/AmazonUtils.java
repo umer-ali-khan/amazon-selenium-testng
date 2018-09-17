@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.amazon.auto.constants.Constants;
+
 public final class AmazonUtils {
 
 	public static boolean isElementDisplayed(WebElement ele) {
@@ -38,21 +40,24 @@ public final class AmazonUtils {
 	}
 
 	public static void presentScrollClick(RemoteWebDriver driver, WebElement ele) {
-		
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-				JavascriptExecutor js = ((JavascriptExecutor) driver);
 
-				//presence in DOM
-				wait.until(ExpectedConditions.visibilityOf(ele));
+		waitForElementToDisplay(driver, ele);
+		executeJavaScript(driver, Constants.JSCode.SCROLL_INTO_VIEW, ele);
 
-				//scrolling
-		
-				js.executeScript("arguments[0].scrollIntoView(true);", ele);
+		ele.click();
+	}
 
-				//clickable
-				wait.until(ExpectedConditions.elementToBeClickable(ele));
-				
-				ele.click();
+	public static void waitForElementToDisplay(RemoteWebDriver driver, WebElement ele) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Constants.TimeDuration.WAIT_FOR_DISPLAY);
+		wait.until(ExpectedConditions.visibilityOf(ele));
+	}
+
+	public static void executeJavaScript(RemoteWebDriver driver, String jsCode, WebElement ele) {
+
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		js.executeScript(jsCode, ele);
+
 	}
 
 }
