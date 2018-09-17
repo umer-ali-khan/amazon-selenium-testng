@@ -1,6 +1,8 @@
 package com.amazon.automation.endtoendtests;
 
 
+import java.util.Properties;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -25,7 +27,9 @@ public class AmazonProceedToOrderTest extends AmazonSuperTest {
 	@BeforeClass
 	public void openKindlePaperwhitePage() throws Exception {
 		
-		AmazonSuperTest.setDriver(PropertiesManager.getProperty(Constants.Caps.DC_BROWSER_NAME));
+	  Properties prop = PropertiesManager.getProperties();
+	  
+		AmazonSuperTest.setDriver(prop.getProperty(Constants.Caps.DC_BROWSER_NAME));
 		
 		getDriver().get(PropertiesManager.getProperty("com.amazon.web.url"));
 		getDriver().manage().window().maximize();

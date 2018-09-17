@@ -1,6 +1,8 @@
 package com.amazon.automation.pagetests;
 
 
+import java.util.Properties;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,7 +22,8 @@ public class AmazonMainPageTest extends AmazonSuperTest {
 	@BeforeClass
 	public void openAmazonHomePage() throws Exception {
 		
-		AmazonSuperTest.setDriver(PropertiesManager.getProperty(Constants.Caps.DC_BROWSER_NAME));
+	  Properties prop = PropertiesManager.getProperties();
+		AmazonSuperTest.setDriver(prop.getProperty(Constants.Caps.DC_BROWSER_NAME));
 		getDriver().get(PropertiesManager.getProperty("com.amazon.web.url"));
 		AmazonSuperTest.getDriver().manage().window().maximize();
 		mainPage = new AmazonMainPage(getDriver());
