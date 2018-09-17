@@ -25,7 +25,7 @@ import com.amazon.auto.enums.BrowserNames;
 
 public abstract class AmazonSuperTest {
 
-	private static RemoteWebDriver webDriver;
+	private static ThreadLocal<RemoteWebDriver> webDriver = new ThreadLocal<RemoteWebDriver>();
 
 	private final static DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -43,48 +43,26 @@ public abstract class AmazonSuperTest {
 
 		setCapabilities();
 
-		try {
+		setDriver(browserType);
 
-			if (webDriver == null) {
-
-				// ThreadLocal.withInitial(() -> new
-				// FirefoxDriver(OptionsManager.getFirefoxOptions()));
-				// webDriver = (ThreadLocal<RemoteWebDriver>)
-				// BrowserFactory.getDriver(getBrowserTypeEnumValue(browserType), capabilities);
-
-				/*webDriver = ThreadLocal.withInitial(() -> {
-					try {
-						return BrowserFactory.getDriver(getBrowserTypeEnumValue(browserType), capabilities);
-					} catch (Exception e) {
-
-						e.printStackTrace();
-						return null;
-					}
-					
-				});*/
-				
-				setDriver(browserType);
-				
-
-			}
-		} catch (Exception e) {
-
-			System.out.println("Web Driver is not created..!, Please check capabilities.");
-		}
-
+	
 	}
 
 	
 	public synchronized static void setDriver (String browser) throws Exception {
         
-		webDriver = (RemoteWebDriver)
-				BrowserFactory.getDriver(getBrowserTypeEnumValue(browser), capabilities);
-		
+		try {
+		webDriver.set(
+				BrowserFactory.getDriver(getBrowserTypeEnumValue(browser), capabilities));
+		}
+		catch(Exception e) {
+			// message
+		}
     }
 	
 	public synchronized static RemoteWebDriver getDriver() {
 
-		return  webDriver;
+		return  webDriver.get();
 	}
 
 	public static WebDriver getScreenshotableWebDriver() {
@@ -97,11 +75,8 @@ public abstract class AmazonSuperTest {
 	}
 
 	@AfterSuite
-	public void closeSession() {
-		if (getDriver() != null) {
-			getDriver().quit();
-
-		}
+	public void closeSessions() {
+		while(getDriver()!=null) getDriver().quit();
 	}
 
 	// private methods

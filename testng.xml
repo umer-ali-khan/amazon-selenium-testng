@@ -4,7 +4,7 @@
 
 
 
-<suite name="Expin Regression" thread-count="2" parallel="methods">
+<suite name="Expin Regression" thread-count="2" parallel="tests">
 
 	<listeners>
 		<listener

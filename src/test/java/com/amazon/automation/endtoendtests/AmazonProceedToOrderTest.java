@@ -2,11 +2,12 @@ package com.amazon.automation.endtoendtests;
 
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
+
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Test;
 
+import com.amazon.auto.constants.Constants;
 import com.amazon.auto.pages.AmazonMainPage;
 import com.amazon.auto.pages.AmazonShoppingCartMainPage;
 import com.amazon.auto.pages.AmazonSignInPage;
@@ -23,6 +24,8 @@ public class AmazonProceedToOrderTest extends AmazonSuperTest {
 	
 	@BeforeClass
 	public void openKindlePaperwhitePage() throws Exception {
+		
+		AmazonSuperTest.setDriver(PropertiesManager.getProperty(Constants.Caps.DC_BROWSER_NAME));
 		
 		getDriver().get(PropertiesManager.getProperty("com.amazon.web.url"));
 		getDriver().manage().window().maximize();
@@ -48,10 +51,7 @@ public class AmazonProceedToOrderTest extends AmazonSuperTest {
 		Assert.assertTrue(signIn.getEmailOrPhoneLabel().contains(AmazonSignInPage.EMAIL_OR_PHONE_LABEL), "The email or phone label text does not match.");
 	}
 	
-	@AfterMethod
-	public void tearDown() {
-		AmazonSuperTest.getDriver().quit();
-	}
+	
 	
 
 }
