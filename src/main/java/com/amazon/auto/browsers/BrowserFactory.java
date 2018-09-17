@@ -4,13 +4,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.amazon.auto.constants.Constants;
 import com.amazon.auto.utils.PropertiesManager;
-import com.auto.amazon.enums.BrowserNames;
+import com.amazon.auto.enums.BrowserNames;
 
 public abstract class BrowserFactory {
 
@@ -35,6 +34,10 @@ public abstract class BrowserFactory {
 
 			System.setProperty("webdriver.chrome.driver", "//Users//admin//Downloads//chromedriver");
 			ChromeOptions ch_options = new ChromeOptions();
+			
+			ch_options.addArguments("--start-maximized");
+			ch_options.addArguments("--ignore-certificate-errors");
+			ch_options.addArguments("--disable-popup-blocking");
 			ch_options.setHeadless(Boolean.parseBoolean(PropertiesManager.getProperty(Constants.Caps.DC_HEAD_LESS)));
 			
 			mDriver = new ChromeDriver(ch_options);

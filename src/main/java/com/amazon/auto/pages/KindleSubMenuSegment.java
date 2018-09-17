@@ -11,7 +11,7 @@ import com.amazon.auto.utils.AmazonUtils;
 public class KindleSubMenuSegment extends PageScreen {
 
 	
-	@FindBy(xpath = "//span[text()='Kindle Paperwhite']")
+	@FindBy(xpath = "//*[contains(text(),'Kindle Paperwhite')]")
 	private WebElement kindlePaperwhite;
 	
 	/**

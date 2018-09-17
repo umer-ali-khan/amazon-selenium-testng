@@ -2,7 +2,9 @@ package com.amazon.automation.pagetests;
 
 
 import org.testng.Assert;
+
 import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.Test;
 
 import com.amazon.auto.pages.AmazonMainPage;
@@ -18,7 +20,7 @@ public class AmazonMainPageTest extends AmazonSuperTest {
 	public void openAmazonHomePage() throws Exception {
 		
 		getDriver().get(PropertiesManager.getProperty("com.amazon.web.url"));
-		getDriver().manage().window().maximize();
+		AmazonSuperTest.getDriver().manage().window().maximize();
 		mainPage = new AmazonMainPage(getDriver());
 	}
 	

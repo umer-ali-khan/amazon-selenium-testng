@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.auto.amazon.enums;
+package com.amazon.auto.enums;
 
 /**
  * @author Umar Khan

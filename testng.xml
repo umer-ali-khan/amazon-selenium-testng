@@ -2,21 +2,28 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Expin Regression">
 
-	<test name="Page Test - Push Notification Alert">
+
+<suite name="Expin Regression" thread-count="2" parallel="methods">
+
+	<listeners>
+		<listener
+			class-name="com.amazon.auto.testng.reports.CreateTestNGReport"></listener>
+	</listeners>
+
+	<test name="Page Test - Amazon main page test">
 		<classes>
 
 			<class
-				name="com.expin.automation.pagetests.NotificationsAlertTest" />
+				name="com.amazon.automation.pagetests.AmazonMainPageTest" />
 		</classes>
 	</test>
 
-	<test name="Page Test - Main Login Screen">
+	<test name="End to End Test - Proceed to Order 2 Kindles" >
 		<classes>
 
 			<class
-				name="com.expin.automation.pagetests.MainLoginScreenTest" />
+				name="com.amazon.automation.endtoendtests.AmazonProceedToOrderTest" />
 		</classes>
 	</test>
 

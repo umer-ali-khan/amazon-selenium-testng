@@ -2,7 +2,9 @@ package com.amazon.automation.endtoendtests;
 
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.amazon.auto.pages.AmazonMainPage;
@@ -46,7 +48,10 @@ public class AmazonProceedToOrderTest extends AmazonSuperTest {
 		Assert.assertTrue(signIn.getEmailOrPhoneLabel().contains(AmazonSignInPage.EMAIL_OR_PHONE_LABEL), "The email or phone label text does not match.");
 	}
 	
-	
+	@AfterMethod
+	public void tearDown() {
+		AmazonSuperTest.getDriver().quit();
+	}
 	
 
 }
